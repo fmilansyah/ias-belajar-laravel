@@ -1,0 +1,57 @@
+//ditambahkan agar dapat menjalankan query builder
+use Illuminate\Support\Facades\DB;
+
+
+public function index()
+    {
+        //mengambil data dari tabel matakuliah
+        $data = DB::table('tblmatakuliah')->get();
+
+        //melakukan konversi ke json
+        return response()->json([
+        "success" => true,
+        "message" => "Data Matakuliah",
+        "data" => $data
+        ]);
+    }
+
+    public function simpan(Request $request)
+    {
+        //perintah untuk menyimpan data
+        DB::table('tblmatakuliah')->insert([
+            'kodematakuliah' => $request->txtkodematakuliah,
+            'matakuliah' => $request->txtmatakuliah,
+	        'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        //memberikan pesan data berhasil disimpan dengan format json untuk client
+      return response()->json([
+        "message" => "Data matakuliah Telah Dibuat"
+      ]);
+    }
+
+    public function update(Request $request)
+    {
+        // update data matakuliah berdasarkan id
+        DB::table('tblmatakuliah')->where('id', $request->txtid)->update([
+            'kodematakuliah' => $request->txtkodematakuliah,
+            'matakuliah' => $request->txtmatakuliah,
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        //memberikan pesan data berhasil diubah dengan format json untuk client
+        return response()->json([
+            "message" => "Data matakuliah Telah Ubah"
+          ]);
+    }
+
+    public function hapus($id)
+    {
+        // menghapus data mahasiswa berdasarkan id 
+        DB::table('tblmatakuliah')->where('id', $id)->delete();
+
+        //memberikan pesan data berhasil hapus dengan format json untuk client
+        return response()->json([
+            "message" => "Data matakuliah Telah Hapus"
+          ]);
+    }

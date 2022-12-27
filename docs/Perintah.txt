@@ -1,0 +1,21 @@
+1. Membuat Model Untuk Matakuliah dengan perintah 
+   -> php artisan make:model ModelMatakuliah -m
+
+2. pada migrasi 2021_06_28_034658_create_model_matakuliahs_table tambahkan tabel matakuliah dan fieldnya
+   -> script ada di toolcode
+
+3. jalankan migrasi untuk membuat tabel, untuk file path sesuaikan dengan yang dibuat
+   -> php artisan migrate --path=/database/migrations/.....
+
+4. cek pada database apakah tabel sudah terbuat
+
+5. buat controller dengan nama ControllerApiMatakuliah dengan perintah
+   -> php artisan make:controller ControllerApiMatakuliah
+
+6. isi ControllerApiMatakuliah dengan script pada toolcode
+
+7. atur url untuk web service di router api, dan tambahkan script pada toolcode
+
+8. url menjadi proyek/api/nama fungsi contohnya http://127.0.0.1:8000/api/matakuliah/get
+
+9. buka postman lalu coba untuk menggunakan fungsi yang telah dibuat

@@ -1,0 +1,13 @@
+//definisikan controller ApiMatakuliah
+Use App\Http\Controllers\ControllerApiMatakuliah;
+
+
+
+//url untuk metode get isinya menampilkan data
+Route::get('/matakuliah/get', [ControllerApiMatakuliah::class,'index']);
+//url untuk metode post yang isinya menyimpan data
+Route::post('/matakuliah/post', [ControllerApiMatakuliah::class,'simpan']);
+//url untuk metode put yang isinya mengubah data
+Route::put('/matakuliah/update', [ControllerApiMatakuliah::class,'update']);
+//url untuk metode delete yang isinya menghapus data
+Route::delete('/matakuliah/delete/{id}', [ControllerApiMatakuliah::class,'hapus']);

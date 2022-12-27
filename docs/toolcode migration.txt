@@ -1,0 +1,19 @@
+    public function up()
+    {
+        Schema::create('tblmatakuliah', function (Blueprint $table) {
+            $table->id();
+            $table->string('kodematakuliah')->unique();
+            $table->string('matakuliah');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tblmatakuliah');
+    }
